@@ -1,3 +1,4 @@
+
 let userScore = 0;
 let computerScore = 0;
 const userScore_span = document.getElementById("user-score");
@@ -9,6 +10,8 @@ const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 const endGame_div = document.querySelector(".endGame");
 
+// Get the modal
+var modal = document.getElementById('myModal');
 
 function getComputerChoice() {
     const choices = ['r', 'p', 's'];
@@ -78,7 +81,7 @@ function qrCodeGenerator(userScore, computerScore) {
         text: "QR CODE",
         width: 177,
         height: 177,
-        colorDark : "#990000",
+        colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
@@ -106,6 +109,8 @@ function main() {
         qrCodeGenerator(userScore, computerScore);
         
     })
+
+
 }
 
 main();

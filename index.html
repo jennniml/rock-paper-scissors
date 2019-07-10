@@ -15,6 +15,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <script src="qrcode.js"></script>
+    <script src='./node_modules/qr-code-scanner/scripts/scanner.js'></script>
+    
+    <script>
+        function tryIt () {
+            window.QRScanner.initiate({
+                match: /^[a-zA-Z0-9]{16,18}$/,
+                onResult: function (result) { console.info('DONE: ', result); },
+                onError: function (err) { console.error('ERR :::: ', err); },
+                onTimeout: function () { console.warn('TIMEDOUT'); },
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -23,9 +35,9 @@
     </header>
 
     <div class="score-board">
-        <div id="user-label" class="badge">user</div>
-        <div id="computer-label" class="badge">comp</div>
-        <span id="user-score">0</span>:<span id="computer-score">0</span>
+        <div id="user-label" class="badge">USER</div>
+        <div id="computer-label" class="badge">COMP</div>
+        <span id="user-score">0</span> : <span id="computer-score">0</span>
     </div>
 
     <div class="result">
@@ -46,11 +58,14 @@
 
     <p class="action-message">Make your move.</p>
 
+    <!-- Trigger for Modal -->
     <div class="endGame">
         <p>End Game</p>
     </div>
 
-    <div id="qrCode"></div>
+    <div id="qrCode">
+        <input type='button' value='Start it' onclick='tryIt()' />
+    </div>
     
     
 
